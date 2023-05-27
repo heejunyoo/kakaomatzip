@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주변 추천</title>
+</head>
+<body>
+  <div class="d-flex" id="wrapper">
+    <!-- sidebar -->
+    <% include sidebar.ejs %>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <% include nav.ejs %>
+        <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">환영 합니다.</h1>
+            <% review.forEach(review => { %>
+            <p><%= review.text %></p>
+            <% }) %>
+        </div>
+    </div>
+</div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../assets/dist/js/scripts.js"></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../assets/dist/css/styles.css" rel="stylesheet" />
+</body>
+</html>
