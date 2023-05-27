@@ -1,9 +1,13 @@
 var express = require("express");
 var router = express.Router();
 const axios = require("axios");
-const JSONNormalize = require("json-normalize");
+global.geoData;
 
-/* GET users listing. */
+router.post("/clickdata", function (req, res, next) {
+  const data = req.body;
+  global.geoData = data;
+});
+
 router.get("/", function (req, res, next) {
   placeId = "ChIJZQkCH3OlfDURoxoozUBZFg8";
   apikey = "AIzaSyDeqeFz2h2t3SRUE-QiD0Ss4XnniDHZ9_k";
@@ -17,16 +21,12 @@ router.get("/", function (req, res, next) {
     .then((response) => {
       const placeDetails = response.data;
       const reviews = placeDetails.result.reviews;
-      console.log(reviews);
+      // console.log(reviews);
       res.render("google/google", {
         review: reviews,
+        initialLatlng: { lat: 37.49969962500532, lng: 127.03235864639282 },
       });
     });
-
-  // res.render("google/google", {
-  //   title: "Google Map",
-  //   review: review,
-  // });
 });
 
 module.exports = router;
