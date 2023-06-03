@@ -13,7 +13,6 @@ function initMap() {
 
   // lat, lng 값을 기반으로 마커 만들기
   placeMarker(myLatlng, map);
-  // console.log(myLatlng);
 
   // map SDK 의 click 이벤트
   map.addListener("click", (mapsMouseEvent) => {
@@ -24,12 +23,7 @@ function initMap() {
     var clickData = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2);
     var clickDataObject = JSON.parse(clickData);
 
-    // console.log(clickDataObject);
-    // console.log(clickDataObject.lat);
-
     redirectToNewPage(clickDataObject);
-
-    sendData(clickData);
     placeMarker(mapsMouseEvent.latLng, map);
   });
 
@@ -62,18 +56,18 @@ function deleteMarkers() {
 }
 
 // 서버로 데이터 전달하는 함수
-function sendData(data) {
-  fetch("/google/clickdata", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: data,
-  });
-}
+// function sendData(data) {
+//   fetch("/google/clickdata", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: data,
+//   });
+// }
 
 function redirectToNewPage(data) {
-  window.location.href = `/google/result?lat=${data.lat}&lng=${data.lng}`;
+  window.location.href = `/google/update?lat=${data.lat}&lng=${data.lng}`;
 }
 
 window.initMap = initMap;

@@ -2,9 +2,17 @@
 <div class="border-end bg-white" id="sidebar-wrapper">
   <div class="sidebar-heading border-bottom bg-light">아래 장소를 추천 합니다</div>
   <div class="list-group list-group-flush">
-
-    <a class="list-group-item list-group-item-action list-group-item-light p-3" href=""><%- Latlng.lat %></a>
-    <a class="list-group-item list-group-item-action list-group-item-light p-3" href=""><%- Latlng.lng %></a>
-
+    <% placeDetailsArray.forEach(placeDetailsArray => { %>
+    <div class="card">
+      <div class="card-header">
+        댓글 수 : <%- placeDetailsArray.ratingTotal %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%- placeDetailsArray.name %></h5>
+        <p class="card-text">평점 : <%- placeDetailsArray.rating %></p>
+        <a href="<%- placeDetailsArray.url %>" class="btn btn-secondary" target="_blank">자세히보기</a>
+      </div>
+    </div>
+    <% }) %>
   </div>
 </div>
